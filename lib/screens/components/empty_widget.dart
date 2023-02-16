@@ -9,7 +9,15 @@ class EmptyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Animate(
       effects: const [ScaleEffect(), FadeEffect()],
-      child: Lottie.asset('assets/lotties/empty_box.json'),
+      child: Column(
+        children: [
+          Lottie.asset('assets/lotties/empty_box.json'),
+          Text(
+            'No values',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+        ],
+      ),
     );
   }
 }

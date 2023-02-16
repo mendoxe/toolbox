@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_snackbar.dart';
 import 'package:tooolbox/screens/components/empty_widget.dart';
 import 'package:tooolbox/screens/text_encoder/control/text_encoder_provider.dart';
 
@@ -29,6 +30,7 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Hero(
           tag: "Text Encoder",
@@ -101,11 +103,13 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
                 label: 'Encrypt',
                 onTap: encryptText,
                 icon: FontAwesomeIcons.lock,
+                iconSIze: 15,
               ),
               DefaultButton(
                 label: 'Decrypt',
                 onTap: decryptText,
                 icon: FontAwesomeIcons.lockOpen,
+                iconSIze: 15,
               ),
             ],
           ),
@@ -118,14 +122,9 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
   void encryptText() {
     String text = _controller.text;
     if (text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          "Value can't be empty...",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        behavior: SnackBarBehavior.floating,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const CustomSnackbar(text: "Value can't be empty...") as SnackBar,
+      );
       return;
     }
     ref.read(encoderNotifierProvider.notifier).encryptText(text);
@@ -135,13 +134,9 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
   void decryptText() {
     String text = _controller.text;
     if (text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          "Value can't be empty...",
-          textAlign: TextAlign.center,
-        ),
-        behavior: SnackBarBehavior.floating,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const CustomSnackbar(text: "Value can't be empty...") as SnackBar,
+      );
       return;
     }
     ref.read(encoderNotifierProvider.notifier).decryptText(text);
@@ -150,14 +145,11 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
 
   void copy() async {
     await Clipboard.setData(
-        ClipboardData(text: ref.read(encoderNotifierProvider).encodedText));
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text(
-        "Copied to Clipboard",
-        textAlign: TextAlign.center,
-      ),
-      behavior: SnackBarBehavior.floating,
-    ));
+      ClipboardData(text: ref.read(encoderNotifierProvider).encodedText),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const CustomSnackbar(text: "Copied to Clipboard") as SnackBar,
+    );
   }
 
   @override

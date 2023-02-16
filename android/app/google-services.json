@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "59853788646",
+    "project_id": "toolbox-9b274",
+    "storage_bucket": "toolbox-9b274.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59853788646:android:9698d34bb13536ac0d7227",
+        "android_client_info": {
+          "package_name": "com.example.tooolbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59853788646-dtkruav1qjrtg3sf5nmks3ki7tlliste.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC-piTcIhs0ICWxwTUmWrMLDrTMX_jHaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59853788646-dtkruav1qjrtg3sf5nmks3ki7tlliste.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

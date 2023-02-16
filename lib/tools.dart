@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/model/tool.dart';
 import 'package:tooolbox/screens/cash_exchange/cash_exchange_screen.dart';
 import 'package:tooolbox/screens/coin_flip/coin_flip_screen.dart';
+import 'package:tooolbox/screens/dice_roll/dice_roll_screen.dart';
 import 'package:tooolbox/screens/password_generator/password_generator_screen.dart';
 import 'package:tooolbox/screens/random_pick/random_pick_screen.dart';
 import 'package:tooolbox/screens/text_encoder/text_encoder_screen.dart';
@@ -21,7 +22,7 @@ List<Tool> tools = [
     route: CoinFlipScreen.routeName,
   ),
   Tool(
-    toolIcon: FontAwesomeIcons.dice,
+    toolIcon: FontAwesomeIcons.shuffle,
     title: "Random Pick",
     color: Colors.deepOrange,
     route: RandomPickScreen.routeName,
@@ -37,5 +38,14 @@ List<Tool> tools = [
     title: "Cash Exchange",
     color: Colors.green,
     route: CashExchangeScreen.routeName,
+  ),
+
+  // DICE ROLL
+
+  Tool(
+    toolIcon: FontAwesomeIcons.dice,
+    title: "Dice Roll",
+    color: Colors.teal,
+    route: DiceRollScreen.routeName,
   ),
 ];

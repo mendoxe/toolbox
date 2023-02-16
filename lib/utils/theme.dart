@@ -68,5 +68,6 @@ ThemeData get darkTheme => ThemeData(
         headline3: GoogleFonts.barlow(
           fontSize: 32,
         ),
+        headlineLarge: GoogleFonts.barlow(fontSize: 42),
       ),
     );

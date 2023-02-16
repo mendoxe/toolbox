@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tooolbox/screens/components/custom_snackbar.dart';
 import 'package:tooolbox/screens/password_generator/control/psw_generator_provider.dart';
 
 class PwsTextField extends ConsumerStatefulWidget {
@@ -61,10 +62,7 @@ class _PwsTextFieldState extends ConsumerState<PwsTextField> {
   void _copyContent() {
     Clipboard.setData(ClipboardData(text: _controller.text));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Password copied to clipboard"),
-        behavior: SnackBarBehavior.floating,
-      ),
+      const CustomSnackbar(text: "Password copied to clipboard") as SnackBar,
     );
   }
 

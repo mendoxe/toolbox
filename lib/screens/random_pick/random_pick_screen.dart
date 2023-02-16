@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_snackbar.dart';
 import 'package:tooolbox/screens/components/empty_widget.dart';
 import 'package:tooolbox/screens/random_pick/control/random_pick_provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -17,6 +18,7 @@ class RandomPickScreen extends ConsumerStatefulWidget {
 
 class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
   late TextEditingController _controller;
+  AnimationController? _animationController;
 
   @override
   void initState() {
@@ -27,6 +29,7 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Hero(
           tag: "Random Pick",
@@ -50,6 +53,7 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
               borderRadius: BorderRadius.circular(8),
               child: TextField(
                 controller: _controller,
+                onSubmitted: (_) => addValue(),
                 decoration: InputDecoration(
                   hintText: "Enter value...",
                   suffixIcon: IconButton(
@@ -61,14 +65,16 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
             ),
           ),
           const SizedBox(height: 32),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: ref
-                .watch(randomPickProvider)
-                .values
-                .map(
-                  (String val) => Chip(
+          SizedBox(
+            height: 40,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: ref.watch(randomPickProvider).values.length,
+              itemBuilder: (context, index) {
+                String val = ref.watch(randomPickProvider).values[index];
+                return Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Chip(
                     label: Text(val),
                     labelPadding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -76,15 +82,29 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
                       ref.read(randomPickProvider.notifier).removeValue(val);
                     },
                   ),
-                )
-                .toList(),
+                );
+              },
+            ),
           ),
           const Spacer(),
           ref.watch(randomPickProvider).selectedValue.isNotEmpty
-              ? Text(
-                  ref.watch(randomPickProvider).selectedValue,
-                  style: Theme.of(context).textTheme.headline3,
-                ).animate().scale().fadeIn()
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    ref.watch(randomPickProvider).selectedValue,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  )
+                      .animate(
+                        onPlay: (controller) =>
+                            _animationController = controller,
+                      )
+                      .scale()
+                      .fadeIn()
+                      .then()
+                      .shake(),
+                )
               : const EmptyWidget(),
           const Spacer(),
           DefaultButton(label: "Pick Value", onTap: pickRandomValue),
@@ -95,14 +115,15 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
   }
 
   void pickRandomValue() {
-    if (ref.read(randomPickProvider.notifier).pickRandomValue()) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text(
-        "No values to choose from...",
-        textAlign: TextAlign.center,
-      ),
-      behavior: SnackBarBehavior.floating,
-    ));
+    if (ref.read(randomPickProvider.notifier).pickRandomValue()) {
+      if (_animationController != null) {
+        _animationController!.forward();
+      }
+      return;
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      const CustomSnackbar(text: "No values to choose from...") as SnackBar,
+    );
   }
 
   void addValue() {

@@ -18,6 +18,7 @@ class PasswordGeneratorScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Hero(
           tag: "Password Generator",

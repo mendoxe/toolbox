@@ -14,25 +14,24 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const HomeSearchField(),
-              Expanded(
-                child: GridView.extent(
-                  padding: const EdgeInsets.all(12.0),
-                  maxCrossAxisExtent: 100,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 1 / 1.55,
-                  children: tools
-                      .map((Tool tool) => HomeGridTile(tool: tool))
-                      .toList(),
-                ),
+        body: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 20.0, right: 20, top: 10),
+              child: HomeSearchField(),
+            ),
+            Expanded(
+              child: GridView.extent(
+                padding: const EdgeInsets.all(12.0),
+                maxCrossAxisExtent: 100,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                childAspectRatio: 1 / 1.55,
+                children:
+                    tools.map((Tool tool) => HomeGridTile(tool: tool)).toList(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

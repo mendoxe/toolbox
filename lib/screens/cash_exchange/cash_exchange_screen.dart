@@ -8,6 +8,7 @@ import 'package:tooolbox/screens/calculate/calculate_screen.dart';
 import 'package:tooolbox/screens/calculate/control/calculate_provider.dart';
 import 'package:tooolbox/screens/cash_exchange/control/cash_exchange_provider.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_snackbar.dart';
 
 import 'components/exchange_chip.dart';
 import 'components/money_text_field.dart';
@@ -59,7 +60,7 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
             alignment: Alignment.center,
             child: Text(
               'Total amount of money',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           const SizedBox(height: 10),
@@ -67,7 +68,7 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
             alignment: Alignment.center,
             child: Text(
               ref.watch(cashExchangeProvider).amount.toString(),
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
           const Spacer(),
@@ -132,10 +133,7 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
     log('_${_nameController.text} + ${_moneyController.text}_');
     if (_nameController.text.isEmpty || _moneyController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Name and money are required'),
-          behavior: SnackBarBehavior.floating,
-        ),
+        const CustomSnackbar(text: "Name and money are required") as SnackBar,
       );
       return;
     }
