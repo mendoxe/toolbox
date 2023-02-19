@@ -4,8 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
-
-import 'components/dice_generator.dart';
+import 'components/dice_widget.dart';
 
 class DiceRollScreen extends StatefulWidget {
   const DiceRollScreen({Key? key}) : super(key: key);
@@ -51,44 +50,15 @@ class _DiceRollScreenState extends State<DiceRollScreen> {
     );
   }
 
-  void rollDice() {
-    int count = 0;
-    Timer.periodic(const Duration(milliseconds: 200), (timer) {
-      if (count < 7) {
-        setState(() {
-          amount = Random().nextInt(6);
-        });
-        count++;
-      } else {
-        timer.cancel();
-      }
+  Future<void> rollDice() async {
+    for (var i = 1; i < 7; i++) {
+      setState(() {
+        amount = i;
+      });
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
+    setState(() {
+      amount = Random().nextInt(6);
     });
-  }
-}
-
-class DiceWidget extends StatelessWidget {
-  const DiceWidget({
-    super.key,
-    required this.amount,
-    this.size = 160,
-  });
-
-  final int amount;
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey, width: 4),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(36.0),
-        child: DiceGenerator(amount: amount),
-      ),
-    );
   }
 }
