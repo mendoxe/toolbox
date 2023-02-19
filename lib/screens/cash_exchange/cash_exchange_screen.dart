@@ -132,9 +132,8 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
   void submit() {
     log('_${_nameController.text} + ${_moneyController.text}_');
     if (_nameController.text.isEmpty || _moneyController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const CustomSnackbar(text: "Name and money are required") as SnackBar,
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar("Name and money are required".toSnackBar());
       return;
     }
     if (int.tryParse(_moneyController.text) == null) return;

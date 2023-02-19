@@ -61,9 +61,8 @@ class _PwsTextFieldState extends ConsumerState<PwsTextField> {
 
   void _copyContent() {
     Clipboard.setData(ClipboardData(text: _controller.text));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const CustomSnackbar(text: "Password copied to clipboard") as SnackBar,
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar("Password copied to clipboard".toSnackBar());
   }
 
   void _readOnly() {

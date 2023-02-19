@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class CustomSnackbar extends StatelessWidget {
-  const CustomSnackbar({Key? key, required this.text}) : super(key: key);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
+extension Snack on String {
+  SnackBar toSnackBar() {
     return SnackBar(
-      content: Text(text),
+      content: Text(this),
       behavior: SnackBarBehavior.floating,
       duration: 1.seconds,
     );

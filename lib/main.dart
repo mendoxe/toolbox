@@ -41,7 +41,8 @@ final _routerDelegate = BeamerDelegate(
 );
 
 void main() {
-  if (TargetPlatform.windows == defaultTargetPlatform) {
+  if (TargetPlatform.windows == defaultTargetPlatform ||
+      defaultTargetPlatform == TargetPlatform.macOS) {
     WidgetsFlutterBinding.ensureInitialized();
     runApp(const ProviderScope(child: MyApp()));
   } else {

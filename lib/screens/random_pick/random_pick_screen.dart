@@ -19,10 +19,12 @@ class RandomPickScreen extends ConsumerStatefulWidget {
 class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
   late TextEditingController _controller;
   AnimationController? _animationController;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     _controller = TextEditingController();
+    _focusNode = FocusNode();
     super.initState();
   }
 
@@ -52,6 +54,8 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: TextField(
+                autofocus: true,
+                focusNode: _focusNode,
                 controller: _controller,
                 onSubmitted: (_) => addValue(),
                 decoration: InputDecoration(
@@ -122,7 +126,7 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const CustomSnackbar(text: "No values to choose from...") as SnackBar,
+      "No values to choose from...".toSnackBar(),
     );
   }
 
@@ -140,6 +144,7 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
     }
     ref.read(randomPickProvider.notifier).addValue(text);
     _controller.clear();
+    _focusNode.requestFocus();
   }
 
   @override

@@ -81,7 +81,7 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
                       ),
                       child: SelectableText(
                         ref.watch(encoderNotifierProvider).encodedText,
-                        style: textTheme.headline5,
+                        style: textTheme.headlineSmall,
                       ),
                     ),
                     Positioned(
@@ -122,9 +122,8 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
   void encryptText() {
     String text = _controller.text;
     if (text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const CustomSnackbar(text: "Value can't be empty...") as SnackBar,
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar("Value can't be empty...".toSnackBar());
       return;
     }
     ref.read(encoderNotifierProvider.notifier).encryptText(text);
@@ -134,9 +133,8 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
   void decryptText() {
     String text = _controller.text;
     if (text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const CustomSnackbar(text: "Value can't be empty...") as SnackBar,
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar("Value can't be empty...".toSnackBar());
       return;
     }
     ref.read(encoderNotifierProvider.notifier).decryptText(text);
@@ -147,9 +145,8 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
     await Clipboard.setData(
       ClipboardData(text: ref.read(encoderNotifierProvider).encodedText),
     );
-    ScaffoldMessenger.of(context).showSnackBar(
-      const CustomSnackbar(text: "Copied to Clipboard") as SnackBar,
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar("Copied to Clipboard".toSnackBar());
   }
 
   @override

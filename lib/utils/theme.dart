@@ -16,20 +16,20 @@ ThemeData get lightTheme => ThemeData(
         elevation: 0,
       ),
       textTheme: TextTheme(
-        bodyText2: GoogleFonts.barlow(
+        bodyMedium: GoogleFonts.barlow(
           fontSize: 12,
         ),
-        bodyText1: GoogleFonts.barlow(
+        bodyLarge: GoogleFonts.barlow(
           fontSize: 14,
         ),
-        headline6: GoogleFonts.barlow(
+        titleLarge: GoogleFonts.barlow(
           fontSize: 16,
         ),
       ),
     );
 
 ThemeData get darkTheme => ThemeData(
-      useMaterial3: true,
+      // useMaterial3: true,
       brightness: Brightness.dark,
       primarySwatch: Colors.lightBlue,
       primaryColor: Colors.lightBlue,
@@ -50,22 +50,22 @@ ThemeData get darkTheme => ThemeData(
         titleTextStyle: GoogleFonts.barlow(fontSize: 18),
       ),
       textTheme: TextTheme(
-        bodyText2: GoogleFonts.barlow(
+        bodyMedium: GoogleFonts.barlow(
           fontSize: 12,
         ),
-        bodyText1: GoogleFonts.barlow(
+        bodyLarge: GoogleFonts.barlow(
           fontSize: 14,
         ),
-        headline6: GoogleFonts.barlow(
+        titleLarge: GoogleFonts.barlow(
           fontSize: 16,
         ),
-        headline5: GoogleFonts.barlow(
+        headlineSmall: GoogleFonts.barlow(
           fontSize: 18,
         ),
-        headline4: GoogleFonts.barlow(
+        headlineMedium: GoogleFonts.barlow(
           fontSize: 24,
         ),
-        headline3: GoogleFonts.barlow(
+        displaySmall: GoogleFonts.barlow(
           fontSize: 32,
         ),
         headlineLarge: GoogleFonts.barlow(fontSize: 42),

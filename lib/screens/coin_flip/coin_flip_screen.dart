@@ -21,7 +21,7 @@ class _CoinFlipScreenState extends State<CoinFlipScreen>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 4000),
+      duration: const Duration(milliseconds: 1000),
       upperBound: 5,
     );
   }
