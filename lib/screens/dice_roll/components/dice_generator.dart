@@ -9,6 +9,7 @@ class DiceGenerator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(amount);
     return Stack(
       children: [
         Positioned(

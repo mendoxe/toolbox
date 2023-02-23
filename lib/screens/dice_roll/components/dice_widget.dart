@@ -7,12 +7,12 @@ import 'dice_generator.dart';
 class DiceWidget extends ConsumerWidget {
   const DiceWidget({
     super.key,
-    required this.amount,
+    required this.position,
     this.size = 160,
   });
 
-  final int amount;
   final double size;
+  final int position;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,7 +29,8 @@ class DiceWidget extends ConsumerWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(36.0),
-        child: DiceGenerator(amount: amount),
+        child:
+            DiceGenerator(amount: ref.watch(diceRollProvider).values[position]),
       ),
     );
   }

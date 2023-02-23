@@ -1,21 +1,21 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/dice_roll/control/dice_roll_provider.dart';
+import 'components/dice_amount_popup_button.dart';
 import 'components/dice_widget.dart';
 
-class DiceRollScreen extends StatefulWidget {
+class DiceRollScreen extends ConsumerStatefulWidget {
   const DiceRollScreen({Key? key}) : super(key: key);
 
   static const String routeName = "/diceRoll";
 
   @override
-  State<DiceRollScreen> createState() => _DiceRollScreenState();
+  ConsumerState<DiceRollScreen> createState() => _DiceRollScreenState();
 }
 
-class _DiceRollScreenState extends State<DiceRollScreen> {
+class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
   int amount = 6;
 
   @override
@@ -26,9 +26,7 @@ class _DiceRollScreenState extends State<DiceRollScreen> {
           tag: "Dice Roll",
           child: Text("Dice Roll"),
         ),
-        actions: const [
-          // DropdownButton(items: items, onChanged: onChanged)
-        ],
+        actions: const [DiceAmountPopupButton()],
       ),
       body: SizedBox(
         width: double.infinity,
@@ -36,11 +34,11 @@ class _DiceRollScreenState extends State<DiceRollScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Spacer(),
-            DiceWidget(amount: amount),
+            const DiceWidget(position: 0),
             const Spacer(),
             DefaultButton(
               label: 'Roll',
-              onTap: rollDice,
+              onTap: ref.read(diceRollProvider.notifier).rollDice,
               icon: FontAwesomeIcons.dice,
             ),
             const SizedBox(height: 24),
@@ -48,17 +46,5 @@ class _DiceRollScreenState extends State<DiceRollScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> rollDice() async {
-    for (var i = 1; i < 7; i++) {
-      setState(() {
-        amount = i;
-      });
-      await Future.delayed(const Duration(milliseconds: 200));
-    }
-    setState(() {
-      amount = Random().nextInt(6);
-    });
   }
 }

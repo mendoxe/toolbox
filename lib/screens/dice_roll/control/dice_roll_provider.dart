@@ -24,7 +24,7 @@ class DiceRollNotifier extends StateNotifier<DiceRollState> {
 
     List<int> newValues = [];
     for (var i = 0; i < state.diceAmount; i++) {
-      newValues.add(Random().nextInt(6));
+      newValues.add(Random().nextInt(7));
     }
     state = state.copyWith(values: newValues);
   }
