@@ -43,6 +43,7 @@ class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: const CustomBackButton(),
         title: const Hero(

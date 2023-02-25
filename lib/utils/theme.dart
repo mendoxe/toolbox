@@ -28,10 +28,7 @@ ThemeData get darkTheme => ThemeData(
         fillColor: LIGHTGREY,
         border: InputBorder.none,
       ),
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-        backgroundColor: Colors.lightBlue,
-      )),
+
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,

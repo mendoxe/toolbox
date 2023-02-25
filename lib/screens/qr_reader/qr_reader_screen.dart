@@ -21,6 +21,7 @@ class _QrReaderScreenState extends State<QrReaderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: const CustomBackButton(),
         title: const Hero(

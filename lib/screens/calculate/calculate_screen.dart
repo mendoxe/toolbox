@@ -1,7 +1,7 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tooolbox/model/creditor.dart';
 import 'package:tooolbox/model/debtor.dart';
 import 'package:tooolbox/screens/calculate/control/calculate_provider.dart';
@@ -16,7 +16,7 @@ class CalculateScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          onPressed: () => context.beamBack(),
+          onPressed: () => context.pop(),
         ),
         title: const Text('Calculate'),
       ),

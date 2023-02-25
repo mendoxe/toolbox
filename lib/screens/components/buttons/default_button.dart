@@ -31,11 +31,17 @@ class DefaultButton extends StatelessWidget {
     TextButton button;
     if (icon == null) {
       button = TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.lightBlue,
+        ),
         onPressed: onTap,
         child: text,
       );
     } else {
       button = TextButton.icon(
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.lightBlue,
+        ),
         onPressed: onTap,
         icon: FaIcon(
           icon,

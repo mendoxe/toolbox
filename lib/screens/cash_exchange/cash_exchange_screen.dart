@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tooolbox/screens/calculate/calculate_screen.dart';
 import 'package:tooolbox/screens/calculate/control/calculate_provider.dart';
 import 'package:tooolbox/screens/cash_exchange/control/cash_exchange_provider.dart';
@@ -155,7 +155,7 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
 
   void calculate() {
     ref.read(calculateProvider.notifier).calculate();
-    context.beamToNamed(CalculateScreen.routeName);
+    context.push(CalculateScreen.routeName);
   }
 
   @override

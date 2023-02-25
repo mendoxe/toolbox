@@ -1,5 +1,5 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tooolbox/screens/onboarding/onboarding_screen.dart';
 import 'package:tooolbox/screens/search/home_search_delegate.dart';
 import 'package:tooolbox/utils/extensions.dart';
@@ -69,8 +69,7 @@ class HomeSearchField extends StatelessWidget {
                                   leading: const Icon(Icons.flag_outlined),
                                   title: const Text('Go to onboarding'),
                                   onTap: () {
-                                    context.beamToNamed(
-                                        OnboardingScreen.routeName);
+                                    context.push(OnboardingScreen.routeName);
                                   },
                                 ),
                               ],

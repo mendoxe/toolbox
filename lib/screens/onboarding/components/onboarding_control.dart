@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tooolbox/screens/home/home_screen.dart';
 import 'package:tooolbox/utils/extensions.dart';
@@ -26,7 +26,7 @@ class OnboardingControl extends StatelessWidget {
             backgroundColor: Colors.transparent,
           ),
           onPressed: () {
-            context.beamToNamed(HomeScreen.routeName);
+            context.go(HomeScreen.routeName);
             Hive.box('settings').put('onboarded', true);
           },
           child: Text(

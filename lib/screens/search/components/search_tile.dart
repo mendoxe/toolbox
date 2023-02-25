@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tooolbox/model/tool.dart';
 import 'package:tooolbox/utils/theme.dart';
 
@@ -25,7 +25,7 @@ class SearchTile extends StatelessWidget {
         title: Text(tool.title),
         onTap: () {
           Navigator.pop(context);
-          context.beamToNamed(tool.route);
+          context.push(tool.route);
         },
       ),
     );

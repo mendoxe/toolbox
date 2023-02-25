@@ -1,6 +1,6 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tooolbox/model/tool.dart';
 
 class HomeGridTile extends StatelessWidget {
@@ -17,7 +17,7 @@ class HomeGridTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: InkWell(
-            onTap: () => context.beamToNamed(tool.route),
+            onTap: () => context.push(tool.route),
             borderRadius: BorderRadius.circular(10),
             child: Padding(
               padding: const EdgeInsets.all(16),
