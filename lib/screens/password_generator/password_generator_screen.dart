@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/password_generator/components/psw_checkbox_listtile.dart';
 import 'package:tooolbox/screens/password_generator/components/psw_text_field.dart';
 import 'package:tooolbox/screens/password_generator/control/psw_generator_provider.dart';
@@ -20,6 +21,7 @@ class PasswordGeneratorScreen extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "Password Generator",
           child: Text("Password Generator"),

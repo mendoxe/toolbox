@@ -8,6 +8,7 @@ import 'package:tooolbox/screens/calculate/calculate_screen.dart';
 import 'package:tooolbox/screens/calculate/control/calculate_provider.dart';
 import 'package:tooolbox/screens/cash_exchange/control/cash_exchange_provider.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/components/custom_snackbar.dart';
 
 import 'components/exchange_chip.dart';
@@ -38,6 +39,7 @@ class _CashExchangeScreenState extends ConsumerState<CashExchangeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "Cash Exchange",
           child: Text("Cash Exchange"),

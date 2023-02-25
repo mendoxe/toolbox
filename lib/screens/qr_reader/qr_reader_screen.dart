@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/components/empty_widget.dart';
 
 class QrReaderScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class _QrReaderScreenState extends State<QrReaderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "QR Reader",
           child: Text("QR Reader"),

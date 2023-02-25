@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/dice_roll/components/dice_spawner.dart';
 import 'package:tooolbox/screens/dice_roll/control/dice_roll_provider.dart';
 import 'components/dice_amount_popup_button.dart';
@@ -43,6 +44,7 @@ class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "Dice Roll",
           child: Text("Dice Roll"),

@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/components/custom_snackbar.dart';
 import 'package:tooolbox/screens/components/empty_widget.dart';
 import 'package:tooolbox/screens/text_encoder/control/text_encoder_provider.dart';
@@ -32,6 +33,7 @@ class _TextEncoderScreenState extends ConsumerState<TextEncoderScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "Text Encoder",
           child: Text("Text Encoder"),

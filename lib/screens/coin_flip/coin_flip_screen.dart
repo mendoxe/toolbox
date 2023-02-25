@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 
 class CoinFlipScreen extends StatefulWidget {
   const CoinFlipScreen({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class _CoinFlipScreenState extends State<CoinFlipScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "Coin Flip",
           child: Text("Coin Flip"),

@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/components/custom_back_button.dart';
 import 'package:tooolbox/screens/components/empty_widget.dart';
 
 class QrGeneratorScreen extends StatefulWidget {
@@ -36,6 +37,7 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const CustomBackButton(),
         title: const Hero(
           tag: "QR Generator",
           child: Text("QR Generator"),
