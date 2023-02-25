@@ -30,12 +30,12 @@ class HomeGridTile extends StatelessWidget {
           flightShuttleBuilder: (_, __, ___, ____, _____) => Text(
             tool.title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           child: Text(
             tool.title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
         const Spacer(),

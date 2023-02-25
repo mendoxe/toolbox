@@ -30,32 +30,38 @@ class _PwsTextFieldState extends ConsumerState<PwsTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: TextField(
-          focusNode: _node,
-          readOnly: readOnly,
-          controller: _controller,
-          maxLines: 4,
-          minLines: 1,
-          decoration: InputDecoration(
-            hintText: "Generate password...",
-            prefixIcon: IconButton(
-              onPressed: _readOnly,
-              icon: Icon(
-                Icons.edit,
-                color: readOnly ? Colors.grey.shade600 : Colors.blue,
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: TextField(
+                focusNode: _node,
+                readOnly: readOnly,
+                controller: _controller,
+                maxLines: 4,
+                minLines: 1,
+                decoration: const InputDecoration(
+                  hintText: "Generate password...",
+                ),
               ),
-            ),
-            suffixIcon: IconButton(
-              onPressed: _copyContent,
-              icon: const Icon(Icons.copy),
             ),
           ),
         ),
-      ),
+        IconButton(
+          onPressed: _readOnly,
+          icon: Icon(
+            Icons.edit,
+            color: readOnly ? Colors.grey.shade600 : Colors.blue,
+          ),
+        ),
+        IconButton(
+          onPressed: _copyContent,
+          icon: const Icon(Icons.copy),
+        ),
+      ],
     );
   }
 

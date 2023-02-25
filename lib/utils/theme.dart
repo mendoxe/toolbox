@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 const Color DARKGREY = Color(0xFF222831);
 const Color LIGHTGREY = Color(0xFF393E46);
@@ -14,17 +13,6 @@ ThemeData get lightTheme => ThemeData(
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
-      ),
-      textTheme: TextTheme(
-        bodyMedium: GoogleFonts.barlow(
-          fontSize: 12,
-        ),
-        bodyLarge: GoogleFonts.barlow(
-          fontSize: 14,
-        ),
-        titleLarge: GoogleFonts.barlow(
-          fontSize: 16,
-        ),
       ),
     );
 
@@ -44,30 +32,8 @@ ThemeData get darkTheme => ThemeData(
           style: TextButton.styleFrom(
         backgroundColor: Colors.lightBlue,
       )),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        titleTextStyle: GoogleFonts.barlow(fontSize: 18),
-      ),
-      textTheme: TextTheme(
-        bodyMedium: GoogleFonts.barlow(
-          fontSize: 12,
-        ),
-        bodyLarge: GoogleFonts.barlow(
-          fontSize: 14,
-        ),
-        titleLarge: GoogleFonts.barlow(
-          fontSize: 16,
-        ),
-        headlineSmall: GoogleFonts.barlow(
-          fontSize: 18,
-        ),
-        headlineMedium: GoogleFonts.barlow(
-          fontSize: 24,
-        ),
-        displaySmall: GoogleFonts.barlow(
-          fontSize: 32,
-        ),
-        headlineLarge: GoogleFonts.barlow(fontSize: 42),
       ),
     );

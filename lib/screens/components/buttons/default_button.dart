@@ -25,7 +25,7 @@ class DefaultButton extends StatelessWidget {
       label,
       style: Theme.of(context)
           .textTheme
-          .bodyText1!
+          .bodyLarge!
           .copyWith(color: Colors.white, fontSize: 16),
     );
     TextButton button;

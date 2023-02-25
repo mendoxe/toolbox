@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'dice_dot.dart';
 
-class DiceGenerator extends StatelessWidget {
-  const DiceGenerator({Key? key, required this.amount}) : super(key: key);
+class DiceContentGenerator extends StatelessWidget {
+  const DiceContentGenerator({Key? key, required this.amount})
+      : super(key: key);
 
   final int amount;
 
   @override
   Widget build(BuildContext context) {
-    print(amount);
     return Stack(
       children: [
         Positioned(

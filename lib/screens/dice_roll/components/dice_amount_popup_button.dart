@@ -11,7 +11,7 @@ class DiceAmountPopupButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<int>(
       icon: const FaIcon(FontAwesomeIcons.arrowDownShortWide),
-      iconSize: 22,
+      iconSize: 16,
       padding: const EdgeInsets.only(right: 16),
       initialValue: 1,
       onSelected: (int value) {

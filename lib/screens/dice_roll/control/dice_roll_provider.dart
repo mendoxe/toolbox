@@ -16,6 +16,8 @@ class DiceRollNotifier extends StateNotifier<DiceRollState> {
   }
 
   Future<void> rollDice() async {
+    if (state.isRolling) return;
+    state = state.copyWith(isRolling: true);
     for (var i = 1; i < 7; i++) {
       state = state
           .copyWith(values: [for (var j = 0; j < state.diceAmount; j++) i]);
@@ -24,8 +26,8 @@ class DiceRollNotifier extends StateNotifier<DiceRollState> {
 
     List<int> newValues = [];
     for (var i = 0; i < state.diceAmount; i++) {
-      newValues.add(Random().nextInt(7));
+      newValues.add(Random().nextInt(6) + 1);
     }
-    state = state.copyWith(values: newValues);
+    state = state.copyWith(values: newValues, isRolling: false);
   }
 }

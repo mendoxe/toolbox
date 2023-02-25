@@ -49,24 +49,30 @@ class _RandomPickScreenState extends ConsumerState<RandomPickScreen> {
       body: Column(
         children: [
           const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: TextField(
-                autofocus: true,
-                focusNode: _focusNode,
-                controller: _controller,
-                onSubmitted: (_) => addValue(),
-                decoration: InputDecoration(
-                  hintText: "Enter value...",
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.send),
-                    onPressed: addValue,
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: TextField(
+                      autofocus: true,
+                      focusNode: _focusNode,
+                      controller: _controller,
+                      onSubmitted: (_) => addValue(),
+                      decoration: const InputDecoration(
+                        hintText: "Enter value...",
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              IconButton(
+                icon: const Icon(Icons.send),
+                onPressed: addValue,
+              ),
+            ],
           ),
           const SizedBox(height: 32),
           SizedBox(

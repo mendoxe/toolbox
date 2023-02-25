@@ -8,13 +8,14 @@ import 'components/home_search_field.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  static const String routeName = "/";
+  static const String routeName = "/home";
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.only(left: 20.0, right: 20, top: 10),

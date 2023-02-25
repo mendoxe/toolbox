@@ -1,10 +1,14 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tooolbox/screens/components/buttons/default_button.dart';
+import 'package:tooolbox/screens/dice_roll/components/dice_spawner.dart';
 import 'package:tooolbox/screens/dice_roll/control/dice_roll_provider.dart';
 import 'components/dice_amount_popup_button.dart';
-import 'components/dice_widget.dart';
 
 class DiceRollScreen extends ConsumerStatefulWidget {
   const DiceRollScreen({Key? key}) : super(key: key);
@@ -17,6 +21,23 @@ class DiceRollScreen extends ConsumerStatefulWidget {
 
 class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
   int amount = 6;
+  late StreamSubscription<AccelerometerEvent> accelerometrStream;
+
+  @override
+  void initState() {
+    super.initState();
+    accelerometrStream = accelerometerEvents.listen((AccelerometerEvent event) {
+      // Calculate the total acceleration vector using Pythagoras' theorem
+      double acceleration =
+          sqrt(pow(event.x, 2) + pow(event.y, 2) + pow(event.z, 2));
+
+      // If the acceleration is above a certain threshold, assume the phone is shaking
+      if (acceleration > 40) {
+        ref.read(diceRollProvider.notifier).rollDice();
+        debugPrint('Phone is shaking!');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +55,7 @@ class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Spacer(),
-            const DiceWidget(position: 0),
+            const DiceSpawner(),
             const Spacer(),
             DefaultButton(
               label: 'Roll',
@@ -46,5 +67,11 @@ class _DiceRollScreenState extends ConsumerState<DiceRollScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    accelerometrStream.cancel();
+    super.dispose();
   }
 }

@@ -14,7 +14,7 @@ class ListTileSlider extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 20.0),
         child: Text(
           "Password length:  ${ref.watch(pswGeneratorProvider).pswLength.toInt().toString()}",
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
       subtitle: Slider(

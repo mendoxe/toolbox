@@ -24,7 +24,7 @@ class EncoderButton extends StatelessWidget {
           ),
           label: Text(
             label,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
       ),
